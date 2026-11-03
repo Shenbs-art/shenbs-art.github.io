@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FRAME — 摄影作品集</title>
 <style>
-:root{--bg:#f7f7f4;--ink:#171715;--muted:#85857f;--line:#e5e5df}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+:root{--bg:#f7f7f4;--ink:#171715;--muted:#85857f;--line:#e5e5df}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
 header{height:82px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
 .logo{font-size:19px;font-weight:750;letter-spacing:.22em}.nav{display:flex;gap:28px;font-size:11px;letter-spacing:.14em;color:var(--muted)}
-main{max-width:1320px;margin:auto;padding:74px 6vw 100px}
-.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;gap:24px}
-.eyebrow{font-size:10px;letter-spacing:.22em;color:var(--muted);margin-bottom:18px}
-h1{font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-.065em;font-weight:500;margin:0}
+main{max-width:1320px;margin:auto;padding:74px 6vw 100px}.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;gap:24px}
+.eyebrow{font-size:10px;letter-spacing:.22em;color:var(--muted);margin-bottom:18px}h1{font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-.065em;font-weight:500;margin:0}
 .sub{max-width:260px;color:var(--muted);font-size:12px;line-height:1.8}
-.upload{border:1px dashed #c9c9c1;min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:.2s;margin-bottom:58px;background:rgba(255,255,255,.35)}
-.upload:hover,.upload.drag{border-color:#333;background:#fff}
-.upload-inner{pointer-events:none}.upload-icon{font-size:25px;margin-bottom:12px;color:#777}.upload strong{display:block;font-size:13px;font-weight:550;margin-bottom:7px}.upload small{font-size:11px;color:var(--muted)}
-#fileInput{display:none}
-.gallery-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.gallery-head h2{font-size:11px;letter-spacing:.18em;font-weight:600;margin:0}.count{font-size:11px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.item{position:relative;overflow:hidden;background:#e9e9e4;aspect-ratio:4/5;cursor:zoom-in}
-.item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s}
-.item:hover img{transform:scale(1.035)}
-.item .meta{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;color:white;font-size:10px;text-shadow:0 1px 8px #0008;opacity:0;transition:.2s}
-.item:hover .meta{opacity:1}.remove{border:0;background:#ffffffd9;color:#222;border-radius:50%;width:28px;height:28px;cursor:pointer;text-shadow:none}
-.empty{grid-column:1/-1;padding:64px 20px;text-align:center;color:var(--muted);font-size:12px;border:1px solid var(--line)}
+.panel{border:1px solid var(--line);padding:18px 20px;margin-bottom:28px;background:#fff9}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+button,.file-label{font:inherit;cursor:pointer}.btn{border:1px solid #222;background:#222;color:white;padding:10px 16px;font-size:11px;letter-spacing:.08em}
+.btn.secondary{background:transparent;color:#222;border-color:#ccc}.btn:disabled{opacity:.5;cursor:wait}
+.status{font-size:11px;color:var(--muted);margin-top:10px}.hidden{display:none!important}
+.login{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.login input{padding:10px;border:1px solid var(--line);background:white;min-width:210px;font-size:12px}
+.upload{border:1px dashed #c9c9c1;min-height:160px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;margin-bottom:58px;background:rgba(255,255,255,.35)}
+.upload:hover,.upload.drag{border-color:#333;background:#fff}.upload-inner{pointer-events:none}.upload-icon{font-size:25px;margin-bottom:12px;color:#777}
+.upload strong{display:block;font-size:13px;font-weight:550;margin-bottom:7px}.upload small{font-size:11px;color:var(--muted)}#fileInput{display:none}
+.gallery-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.gallery-head h2{font-size:11px;letter-spacing:.18em;font-weight:600;margin:0}.count{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.item{position:relative;overflow:hidden;background:#e9e9e4;aspect-ratio:4/5;cursor:zoom-in}
+.item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s}.item:hover img{transform:scale(1.035)}
+.item .meta{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;color:white;font-size:10px;text-shadow:0 1px 8px #0008;opacity:0;transition:.2s}.item:hover .meta{opacity:1}
+.remove{border:0;background:#ffffffd9;color:#222;border-radius:50%;width:28px;height:28px;cursor:pointer}.empty{grid-column:1/-1;padding:64px 20px;text-align:center;color:var(--muted);font-size:12px;border:1px solid var(--line)}
 footer{border-top:1px solid var(--line);padding:24px 6vw;display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:.12em}
-.lightbox{position:fixed;inset:0;background:#10100fee;display:none;align-items:center;justify-content:center;padding:5vh 5vw;z-index:5}
-.lightbox.open{display:flex}.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}.close{position:absolute;right:28px;top:22px;color:white;background:none;border:0;font-size:30px;cursor:pointer}
+.lightbox{position:fixed;inset:0;background:#10100fee;display:none;align-items:center;justify-content:center;padding:5vh 5vw;z-index:5}.lightbox.open{display:flex}.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}
+.close{position:absolute;right:28px;top:22px;color:white;background:none;border:0;font-size:30px;cursor:pointer}
 @media(max-width:760px){header{height:68px}.nav{gap:12px;font-size:9px}main{padding-top:52px}.intro{display:block}.sub{margin-top:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
 @media(max-width:460px){.grid{grid-template-columns:1fr}.item{aspect-ratio:5/4}.nav span:last-child{display:none}}
 </style>
@@ -37,25 +34,85 @@ footer{border-top:1px solid var(--line);padding:24px 6vw;display:flex;justify-co
 <body>
 <header><div class="logo">FRAME.</div><nav class="nav"><span>PORTFOLIO</span><span>PHOTOGRAPHY</span><span>2026</span></nav></header>
 <main>
-  <section class="intro"><div><div class="eyebrow">A VISUAL JOURNAL / 001</div><h1>Moments<br>in stillness.</h1></div><p class="sub">用影像收藏日常。<br>一个安静、留白的摄影作品集空间。</p></section>
-  <label class="upload" id="dropzone" for="fileInput"><div class="upload-inner"><div class="upload-icon">＋</div><strong>添加你的摄影作品</strong><small>点击选择图片，或将图片拖放到这里 · JPG / PNG / WEBP</small></div></label>
-  <input id="fileInput" type="file" accept="image/*" multiple>
-  <div class="gallery-head"><h2>SELECTED WORKS</h2><span class="count" id="count">0 IMAGES</span></div>
-  <section class="grid" id="gallery"><div class="empty">你的作品将在这里呈现。上传第一张照片，开始构建你的画廊。</div></section>
+<section class="intro"><div><div class="eyebrow">A VISUAL JOURNAL / 001</div><h1>Moments<br>in stillness.</h1></div><p class="sub">用影像收藏日常。<br>一个安静、留白的摄影作品集空间。</p></section>
+<section class="panel" id="adminPanel">
+<div class="panel-head"><div><strong style="font-size:12px">作品管理</strong><div class="status" id="authStatus">访客模式 · 所有人可浏览作品</div></div><button class="btn secondary" id="loginToggle">管理员登录</button></div>
+<div class="login hidden" id="loginForm"><input id="email" type="email" value="intellevine@gmail.com" autocomplete="username" aria-label="管理员邮箱"><input id="password" type="password" placeholder="Supabase 登录密码" autocomplete="current-password" aria-label="登录密码"><button class="btn" id="signIn">登录</button></div>
+<div class="status" id="message" role="status">管理员请使用指定邮箱登录后管理作品。</div>
+<button class="btn secondary hidden" id="signOut">退出登录</button>
+</section>
+<label class="upload hidden" id="dropzone" for="fileInput"><div class="upload-inner"><div class="upload-icon">＋</div><strong>添加你的摄影作品</strong><small>点击选择图片，或将图片拖放到这里 · JPG / PNG / WEBP</small></div></label>
+<input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+<div class="gallery-head"><h2>SELECTED WORKS</h2><span class="count" id="count">0 IMAGES</span></div>
+<section class="grid" id="gallery"><div class="empty">正在加载作品…</div></section>
 </main>
 <footer><span>© 2026 FRAME STUDIO</span><span>MADE TO HOLD MOMENTS.</span></footer>
 <div class="lightbox" id="lightbox"><button class="close" id="close" aria-label="关闭">×</button><img id="largeImage" alt="摄影作品预览"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const input=document.getElementById('fileInput'),zone=document.getElementById('dropzone'),gallery=document.getElementById('gallery'),count=document.getElementById('count'),lightbox=document.getElementById('lightbox'),large=document.getElementById('largeImage');
-let photos=[];
-function addFiles(files){[...files].filter(f=>f.type.startsWith('image/')).forEach(file=>{const reader=new FileReader();reader.onload=e=>{photos.push({src:e.target.result,name:file.name});render()};reader.readAsDataURL(file)})}
-function render(){count.textContent=photos.length+' IMAGE'+(photos.length===1?'':'S');gallery.innerHTML='';if(!photos.length){gallery.innerHTML='<div class="empty">你的作品将在这里呈现。上传第一张照片，开始构建你的画廊。</div>';return}
-photos.forEach((p,i)=>{const card=document.createElement('article');card.className='item';const img=document.createElement('img');img.src=p.src;img.alt=p.name;img.loading='lazy';img.addEventListener('click',()=>{large.src=p.src;lightbox.classList.add('open')});const meta=document.createElement('div');meta.className='meta';const name=document.createElement('span');name.textContent=p.name;const del=document.createElement('button');del.className='remove';del.textContent='×';del.title='移除图片';del.addEventListener('click',e=>{e.stopPropagation();photos.splice(i,1);render()});meta.append(name,del);card.append(img,meta);gallery.append(card)})}
-input.addEventListener('change',e=>{addFiles(e.target.files);input.value=''});
+const SUPABASE_URL='https://ojjdlriszzyxodwuihfm.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_QmGlovEIOZ-sXRZYq1oIaA_YinwY8YP';
+const ADMIN_EMAIL='intellevine@gmail.com';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const $=id=>document.getElementById(id);
+const input=$('fileInput'),zone=$('dropzone'),gallery=$('gallery'),count=$('count'),lightbox=$('lightbox'),large=$('largeImage');
+let photos=[],session=null;
+function say(msg){$('message').textContent=msg}
+function isAdmin(){return !!session&&session.user.email?.toLowerCase()===ADMIN_EMAIL}
+function syncAuth(){
+const admin=isAdmin();$('authStatus').textContent=admin?'已登录管理员：'+ADMIN_EMAIL:'访客模式 · 所有人可浏览作品';
+$('loginToggle').classList.toggle('hidden',admin);$('loginForm').classList.add('hidden');$('signOut').classList.toggle('hidden',!admin);zone.classList.toggle('hidden',!admin);
+}
+async function loadPhotos(){
+gallery.innerHTML='<div class="empty">正在加载作品…</div>';
+const {data,error}=await db.from('photos').select('*').order('created_at',{ascending:false});
+if(error){gallery.innerHTML='<div class="empty">作品列表暂时无法加载。请确认已在 Supabase 执行数据库配置脚本。</div>';say(error.message);return}
+photos=data||[];render();
+}
+function render(){
+count.textContent=photos.length+' IMAGE'+(photos.length===1?'':'S');gallery.innerHTML='';
+if(!photos.length){gallery.innerHTML='<div class="empty">你的作品将在这里呈现。上传第一张照片，开始构建你的画廊。</div>';return}
+photos.forEach(p=>{
+const card=document.createElement('article');card.className='item';const img=document.createElement('img');
+const {data}=db.storage.from('portfolio').getPublicUrl(p.path);img.src=data.publicUrl;img.alt=p.name;img.loading='lazy';
+img.addEventListener('click',()=>{large.src=img.src;lightbox.classList.add('open')});
+const meta=document.createElement('div');meta.className='meta';const name=document.createElement('span');name.textContent=p.name;meta.append(name);
+if(isAdmin()){const del=document.createElement('button');del.className='remove';del.textContent='×';del.title='删除图片';del.addEventListener('click',async e=>{e.stopPropagation();if(!confirm('确定删除这张作品？'))return;del.disabled=true;
+const {error:storageError}=await db.storage.from('portfolio').remove([p.path]);if(storageError){say('删除图片失败：'+storageError.message);del.disabled=false;return}
+const {error}=await db.from('photos').delete().eq('id',p.id);if(error){say('图片文件已删除，但记录删除失败：'+error.message);return}
+say('作品已删除。');await loadPhotos()});meta.append(del)}
+card.append(img,meta);gallery.append(card)
+})
+}
+$('loginToggle').addEventListener('click',()=>{$('loginForm').classList.toggle('hidden');$('email').focus()});
+$('signIn').addEventListener('click',async()=>{const email=$('email').value.trim().toLowerCase(),password=$('password').value;
+if(email!==ADMIN_EMAIL){say('此邮箱没有管理员权限。');return}if(!password){say('请输入 Supabase 登录密码。');return}
+$('signIn').disabled=true;say('正在登录…');const {data,error}=await db.auth.signInWithPassword({email,password});$('signIn').disabled=false;
+if(error){say('登录失败：'+error.message);return}session=data.session;syncAuth();say('管理员登录成功。');render()
+});
+$('signOut').addEventListener('click',async()=>{await db.auth.signOut();session=null;syncAuth();say('已退出登录。');render()});
+db.auth.getSession().then(({data})=>{session=data.session;syncAuth();render()});
+db.auth.onAuthStateChange((_event,newSession)=>{session=newSession;syncAuth();render()});
+async function addFiles(files){
+if(!isAdmin()){say('请先以管理员身份登录。');return}
+for(const file of [...files]){
+if(!['image/jpeg','image/png','image/webp'].includes(file.type)){say('仅支持 JPG、PNG、WEBP 图片。');continue}
+if(file.size>15*1024*1024){say('单张图片不能超过 15 MB：'+file.name);continue}
+const safeName=file.name.replace(/[^\w.\-\u4e00-\u9fff]/g,'_'),path=Date.now()+'-'+crypto.randomUUID()+'-'+safeName;
+say('正在上传：'+file.name);
+const {error:uploadError}=await db.storage.from('portfolio').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type});
+if(uploadError){say('上传失败：'+uploadError.message);continue}
+const {error}=await db.from('photos').insert({name:file.name,path});
+if(error){await db.storage.from('portfolio').remove([path]);say('保存作品记录失败：'+error.message);continue}
+say('已上传：'+file.name)
+}
+input.value='';await loadPhotos()
+}
+input.addEventListener('change',e=>addFiles(e.target.files));
 ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.add('drag')}));
 ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.remove('drag')}));
 zone.addEventListener('drop',e=>addFiles(e.dataTransfer.files));
-document.getElementById('close').addEventListener('click',()=>lightbox.classList.remove('open'));
+$('close').addEventListener('click',()=>lightbox.classList.remove('open'));
 lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('open')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')lightbox.classList.remove('open')});
 </script>
