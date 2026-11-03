@@ -91,8 +91,8 @@ $('signIn').disabled=true;say('正在登录…');const {data,error}=await db.aut
 if(error){say('登录失败：'+error.message);return}session=data.session;syncAuth();say('管理员登录成功。');render()
 });
 $('signOut').addEventListener('click',async()=>{await db.auth.signOut();session=null;syncAuth();say('已退出登录。');render()});
-db.auth.getSession().then(({data})=>{session=data.session;syncAuth();render()});
-db.auth.onAuthStateChange((_event,newSession)=>{session=newSession;syncAuth();render()});
+db.auth.getSession().then(async ({data})=>{session=data.session;syncAuth();await loadPhotos()});
+db.auth.onAuthStateChange(async (_event,newSession)=>{session=newSession;syncAuth();await loadPhotos()});
 async function addFiles(files){
 if(!isAdmin()){say('请先以管理员身份登录。');return}
 for(const file of [...files]){
